@@ -51,7 +51,7 @@ _returnzero:
         APICall API_0_3,0,3
         APICall API_1_3,1,3
         APICall API_2_3,2,3
-        APICall API_3_3,3,3
+        APICall API_3_3,3,0  ; for some reason this is trap #$0 again
         APICall API_4_3,4,3
         APICall API_5_3,5,3
         APICall API_6_3,6,3
