@@ -1,0 +1,85 @@
+# Sample Translator 2.0 in RAM
+
+TRASLA          <ram+0x6c24>
+fu_table        <ram+0x6c28>
+g_calls         <ram+0x6c2c>
+UPDATE          <ram+0x6c30>
+draw_spot       <ram+0x761e>
+KeyFunc         <ram+0x7622>
+
+# Sample Translator 2.0 in ROM
+
+0x430b2c        sample translator entry address (0x431720)
+0x430b30        sample translator table address (0x43ebc4)
+
+# ST.C
+0x430b34        exa
+...
+0x4314d6        SwitchKey
+0x431620        exec_trasla
+0x431698        open_trasla
+0x431720        main
+
+# SUBTRASL.C
+0x4332cc        key_dummy
+0x4332ce        mma3
+0x4332f4        draw_clock
+0x433324        wait_for_conv
+0x4333e4        init_graf
+0x433402        ref_graf
+0x433462        pixel
+0x4334a6        putpixel
+0x4334ca        clrpixel
+0x4334f0        thrupixel
+0x433554        DrawSplit
+0x43369a        AlreadyFound
+0x433720        draw_sample
+0x4339d4        ClickTest
+...
+0x433c38        init_trasla
+...
+0x43400e        delete_sample
+...
+
+# SUBTRASL.C
+...
+0x434a68        def_spot
+...
+
+# GEDISK.C
+0x435066        draw_options
+...
+
+# CREATE.C
+...
+0x436980        buildtstscript  CHECK
+0x438d58        buildgblscript  CHECK
+...
+0x439d3e        save_sound      CHECK
+...
+
+# INFO.C
+0x43a4ee        inf_draw_opt
+...
+
+# STUT1.C
+0x43c374        create
+0x43c426        damp_req
+...
+0x43ce7e        PlayIfRack      CHECK
+...
+
+# STUT2.C
+0x43cfb6        akaitoasci
+0x43cfec        LoadAkaySample
+0x43d1c2        AlreadyExist
+0x43d20a        OverlapSplit
+0x43d2c4        LoadGroup
+0x43d76a        SelectVel
+0x43da42        ExistVel
+0x43da94        TestVel
+0x43dae6        LoadAkaiProgram
+
+0x43dd56        syscall table start
+0x43ddda        data section start
+0x43ebc4        table start
