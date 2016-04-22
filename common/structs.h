@@ -32,7 +32,11 @@ struct ECSB
   /* 0x6f: */
   uchar user_nr;
   /* 0x70-0x7a: unknown */
-  char unknown_70[11];
+  ushort unknown_70;
+  /* 0x72-0x73: */
+  char work_groups[2];
+  /* 0x74-0x7a: unknown */
+  char unknown_71[7];
   /* 0x7b-0x81: might be larger */
   char name[7];
   /* 0x82 */
