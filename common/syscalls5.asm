@@ -15,7 +15,7 @@
         APICall API_7_5,$7,5
         APICall API_8_5,$8,5
         APICall g_gotoxy,$9,5
-        APICall API_A_5,$a,5
+        APICall g_setclip,$a,5
         APICall API_B_5,$b,5
         APICall API_C_5,$c,5
         APICall API_D_5,$d,5
