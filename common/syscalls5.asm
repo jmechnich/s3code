@@ -11,8 +11,8 @@
         APICall g_wherex,$3,5
         APICall g_wherey,$4,5
         APICall API_5_5,$5,5
-        APICall API_6_5,$6,5
-        APICall API_7_5,$7,5
+        APICall g_crson,$6,5
+        APICall g_crsoff,$7,5
         APICall API_8_5,$8,5
         APICall g_gotoxy,$9,5
         APICall g_setclip,$a,5
