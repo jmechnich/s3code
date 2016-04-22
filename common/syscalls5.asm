@@ -8,8 +8,8 @@
         APICall g_rect,$0,5
         APICall g_drawtext,$1,5
         APICall API_2_5,$2,5
-        APICall API_3_5,$3,5
-        APICall API_4_5,$4,5
+        APICall g_wherex,$3,5
+        APICall g_wherey,$4,5
         APICall API_5_5,$5,5
         APICall API_6_5,$6,5
         APICall API_7_5,$7,5
@@ -33,7 +33,7 @@
         APICall API_19_5,$19,5
         APICall API_1A_5,$1a,5
         APICall API_1B_5,$1b,5
-        APICall API_1C_5,$1c,5
+        APICall g_cwrite,$1c,5
         APICall g_recfill,$1d,5
         APICall API_1E_5,$1e,5
         APICall API_1F_5,$1f,5
