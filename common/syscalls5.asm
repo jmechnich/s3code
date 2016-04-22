@@ -10,7 +10,7 @@
         APICall API_2_5,$2,5
         APICall g_wherex,$3,5
         APICall g_wherey,$4,5
-        APICall API_5_5,$5,5
+        APICall g_setcrs,$5,5
         APICall g_crson,$6,5
         APICall g_crsoff,$7,5
         APICall API_8_5,$8,5
