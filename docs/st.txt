@@ -1,24 +1,98 @@
-# Sample Translator 2.0 in RAM
+################################################################################# Sample Translator 2.0 in RAM
+################################################################################
 
-TRASLA          <ram+0x6c24>
-fu_table        <ram+0x6c28>
-g_calls         <ram+0x6c2c>
-UPDATE          <ram+0x6c30>
-draw_spot       <ram+0x761e>
-KeyFunc         <ram+0x7622>
+# ST.C
+0x6c24          TRASLA                  (DWORD)
+0x6c28          fu_table                (DWORD)
+0x6c2c          g_calls                 (DWORD)
+0x6c30          UPDATE                  (BYTE)
+0x6c32          n_sample                (WORD)
+0x6d04          clp_n_sample            (DWORD)
+0x6d08          SAMPLE_DEF              (ARRAY/STRUCT)
+0x6dc2          play_sample             (ARRAY/STRUCT)
+0x7522          clp_p_sample            (ARRAY/STRUCT)
+0x7598          start_disp              (DWORD)
+0x759c          assign                  (ARRAY 0x60)
+0x75fc          clp_assign              (ARRAY 0x6)
+0x7602          SAVED                   (WORD)
+0x7604          p_script                (DWORD)
+0x7608          Options                 (WORD)
+0x760a          next_sample_start       (DWORD)
+0x760e          total_sample_length     (DWORD)
+0x7612          v_start                 (DWORD)
+0x7616          old_tpc_write           (DWORD)
+0x761a          old_key2_read           (DWORD)
+0x761e          draw_spot               (DWORD)
+0x7622          KeyFunc                 (DWORD)
+0x7626          MenuPage                (WORD)
+0x7628          note_on_play            (ARRAY 0x80)
+0x76a8          MMA_REQ                 (WORD)
+0x76aa          clp                     (WORD)
 
+# CONVERTS.C
+0x76ac          f_job
+
+# SUBTRASL.C
+0x76bc          img  (static in wait_for_conv)
+0x76e2          nome (static in nome_nota)
+0x76e6          n_s  (static in def_spot)
+0x76e8          n_s  (static in inf_spot)
+0x76ea          img  (static in watch)
+...
+
+# PLAYBACK.C
+0x7732          old_clip
+...
+
+################################################################################
 # Sample Translator 2.0 in ROM
+################################################################################
 
-0x430b2c        sample translator entry address (0x431720)
-0x430b30        sample translator table address (0x43ebc4)
+0x430b2c        sample translator entry address (0x431720 = main)
+0x430b30        sample translator next program address (0x43ebc4)
 
 # ST.C
 0x430b34        exa
-...
+0x430b62        SetOptionPg0
+0x430bae        SetOptionPg1
+0x430bf8        draw_option
+0x430cc6        SwitchContext
+0x430dda        f_key0
+0x430f78        SCopy
+0x430fee        SPaste
+0x43106e        f_key1
+0x431154        WaitDump
+0x431240        InitWin
+0x4312e2        enable_mma
+0x431302        PreInit
+0x43142e        OutSwitch
 0x4314d6        SwitchKey
 0x431620        exec_trasla
 0x431698        open_trasla
 0x431720        main
+
+# CONVERTS.C
+0x431768        test_click
+0x43184e        put_file
+0x431894        samplevision_conv
+0x431cb2        WaveConvData
+0x431e2a        wave_conv
+0x431f66        mma_conv
+0x43205a        avalon_conv
+0x4321da        sound_design_conv
+0x4322fa        akay_conv
+0x432590        InrangeLoop
+0x432632        CutEnd
+0x432652        ReadDistance
+0x432694        SampleVisConv
+0x43282a        AvalonConv
+0x4329ca        SDConv
+0x432b6e        WaveConv
+0x432c8e        AkaiConv
+0x432e48        convert_sample
+0x432fae        convert_mma
+0x433160        ReceivedSample
+0x4331be        AkaiConvert
 
 # SUBTRASL.C
 0x4332cc        key_dummy
@@ -35,39 +109,118 @@ KeyFunc         <ram+0x7622>
 0x43369a        AlreadyFound
 0x433720        draw_sample
 0x4339d4        ClickTest
-...
-0x433c38        init_trasla
-...
+0x433afe        MoveSample
+0x43ec38        init_trasla
+0x433e62        dispa
+0x433ed2        file_to_disp
+0x433ef6        disp_to_file
+0x433f1a        move_disp_data
+0x433f3e        lint_lmot
+0x433f7c        sint_smot
+0x433f98        MoreOne
 0x43400e        delete_sample
-...
-
-# SUBTRASL.C
-...
+0x4341d6        posizione_nota
+0x43423a        cursore
+0x434342        nome_nota
+0x43439a        pulisci_nome
+0x4343cc        inisplit
+0x434554        aggiorna_split
+0x4345f2        mark_split
+0x4346d4        unmark_split
+0x434792        draw_old_split
+0x4347f0        do_ss
+0x4348da        setup_ss
+0x43490e        select_drive
 0x434a68        def_spot
-...
+0x434b2e        inf_spot
+0x434bfc        key_play
+0x434cea        tuning_play
+0x434dd2        new_key_read
+0x434dfa        show_Sndnr
+0x434e78        ela_sndnum
+0x434fe8        watch
+0x43504c        lmemcpy
 
 # GEDISK.C
 0x435066        draw_options
-...
+0x4350e4        show_akai_files
+0x4351e2        show_files
+0x4354e4        redraw_dir
+0x435644        elimina_blank
+0x4356a4        SelectType
+0x4357f8        CloseDisk
+0x435854        load_file
+
+# PLAYBACK.C
+0x435ffa        draw_opt
+0x436156        mark_loop
+0x436314        move_end_loop
+0x436376        move_start_loop
+0x4363d4        clr_loop
+0x43643e        low_draw_func
+0x436576        high_draw_func
+0x436760        refreshloop
+0x43681c        set_loop
+0x436980        buildtstscript
+0x437230        new_gain
+0x4372b6        test_gain
+0x437306        ReadDistance14
+0x437356        file_to_file
+0x437372        playback
+0x438000        send_send
+0x4380a2        put_sample
+
+# ASSIGN.C
+0x4381ec        re_key
+0x4381fa        err_over
+0x43821c        key_intcpt
+0x438352        assign_sound
 
 # CREATE.C
-...
-0x436980        buildtstscript  CHECK
-0x438d58        buildgblscript  CHECK
-...
-0x439d3e        save_sound      CHECK
-...
+0x438754        cdraw_opt
+0x4387f8        memmove_high
+0x438812        clear_spar
+0x438896        SetDefaultEnvelope
+0x4389ee        compactscript
+0x438b96        SetStInfo
+0x438d58        buildgblscript
+0x439724        memmove_down
+0x439746        inc_prg
+0x439784        dec_prg
+0x4397c2        search_su
+0x439810        search_giu
+0x43985a        select_program
+0x439b96        delete_unassign
+0x439c46        clear_null
+0x439c7e        strtoup
+0x439ca8        file_exists_case
+0x439d3e        save_sound
 
 # INFO.C
 0x43a4ee        inf_draw_opt
-...
+0x43a5f2        draw_range
+0x43a710        draw_const
+0x43a81c        i_show
+0x43aa1c        draw_par
+0x43aa4a        tuning_toggle
+0x43aabe        edit_ipar
+0x43b2e2        draw_sel
+0x43b352        info_about
 
 # STUT1.C
 0x43c374        create
 0x43c426        damp_req
-...
-0x43ce7e        PlayIfRack      CHECK
-...
+0x43c5c0        Assign
+0x43c658        Delete
+0x43c736        ExistOne
+0x43c76c        load
+0x43c99e        SendSample
+0x43ca92        FindLoc
+0x43cb22        DelSampleIfExist
+0x43cbd6        ReceiveSample
+0x43cd5a        Update
+0x43cd9a        CancelAll
+0x43ce7e        PlayIfRack
 
 # STUT2.C
 0x43cfb6        akaitoasci
@@ -82,4 +235,3 @@ KeyFunc         <ram+0x7622>
 
 0x43dd56        syscall table start
 0x43ddda        data section start
-0x43ebc4        table start

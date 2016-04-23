@@ -1,0 +1,46 @@
+offset  
+0x0               initial SP (0xfff000)
+0x4               initial PC (0x104)
+0x8-0xff          initial exception vector table (all containing 0x100)
+0x100             user vector 0 (stop #$2700)
+0x104             start of initial program
+0x104-0x127       change memory map:
+                  0x0      ROM
+                  0x200000 RAM
+                  0xfff000 dual-port (onchip) RAM
+0x128-0x13b       create exception vector in RAM
+0x13c-0x157       copy 0x158-0x175 from ROM to dual-port RAM and jmp
+0x158-0x175       change memory map:
+                  0x0      RAM
+                  0x400000 ROM
+################################################################################
+# ROM base offset at 0x400000 from here on
+################################################################################
+0x400176          jmp to 0x4001c0
+0x40017a-0x4001bf code for executing reset
+0x4001c0-0x4001e9 disable RAM and ROM wait states
+0x4001ea-0x400209 change memory map:
+                  0x300000-0x37ffff CS2
+                  0x380000-0x3bffff CS3
+0x40020a          set up external interrupts
+
+... stuff missing here
+
+0x4004ae-0x4026d7 system subroutines
+0x401222-0x40137b syscall tables 0-3
+
+0x4026d8-0x405fef standard library functions
+0x405ff0-0x406501 data segment
+
+################################################################################
+# end of initial program
+################################################################################
+
+0x406502          start of tasks (see rom_tasks.txt)
+
+0x419fc6          trap 4 handler
+0x41a280          syscall trap 4 setup
+0x41dd96          syscall trap 5 setup
+0x41dcd4          trap 5 handler
+0x484d52          syscall trap 6 setup
+0x484e54          trap 6 handler
