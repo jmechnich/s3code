@@ -50,6 +50,8 @@ void   req_usrmsg(char *msg,void *cb);
               HEADING and BODY set the text for the respective message areas
               KEY1-5 set the texts next to the keys right of the display
    void *cb:  callback function after key press
+              has one argument, char key
+              it contains the number of the pressed key (1-5)
 */
 
 /* trap 0, d0 0x13-0x17 (purpose unknown) */
