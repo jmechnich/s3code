@@ -67,27 +67,23 @@ char   mt_levdis(char value);
 short  returnzero();
 
 /* trap 1, d0 0x0 */
-long   m_status(void* base,ushort opcode,long operand);
-/* calls the function pointed to by base+8, passing opcode and operand
-   as parameters. If this function returns -1, do some other stuff too,
-   not sure what. The operand is actually an optional parameter,
-   sometimes it's a pointer, sometimes not.
-*/
+long   status(void* base,ushort opcode,long operand);
+/* calls module.status_mod(opcode, operand) */
 
 /* trap 1, d0 0x1 */
-long   API_1_1(void* base);
+long   read(void* base);
 /* same as m_status, base+0x10, no parameters */
 
 /* trap 1, d0 0x2 */
-long   API_2_1(void* base,long arg);
+long   write(void* base,long arg);
 /* same as m_status, base+0x14, one parameter */
 
 /* trap 1, d0 0x3 */
-long   API_3_1(void* base,long arg1,long arg2);
+long   readp(void* base,long arg1,long arg2);
 /* same as m_status, base+0x10, arg1 passed in a0, arg2 passed in a3 */
 
 /* trap 1, d0 0x4 */
-long   API_4_1(void* base,char* arg);
+long   (void* base,char* arg);
 /* same as m_status, base+0x14, arg passed as (long)(*arg++) */
 
 /* trap 2, d0 0x0 */
