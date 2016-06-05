@@ -36,7 +36,7 @@ offset
 # end of initial program
 ################################################################################
 
-0x406502          start of tasks (see rom_tasks.txt)
+0x406502          start of modules (see rom_modules.txt)
 
 0x419fc6          trap 4 handler
 0x41a280          syscall trap 4 setup

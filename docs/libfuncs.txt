@@ -12,8 +12,13 @@ global offset   name            ROM area
 ...
 
 # stdlib.h ?
-...
+0x4026d8        inrange_b       0x26d8-0x26f7
+0x4026f8        inrange_w       0x26f8-0x2717
+0x402718        ainrange_b      0x2718-0x2769
+0x40276a        toupper         0x276a-0x27a5
+0x4027a6        index           0x27a6-0x27c7
 0x4027c8        hstrtoi         0x27c8-0x2831
+0x402832        itohstr         0x2832-0x289d
 ...
 
 # stdio.h ?
@@ -24,9 +29,13 @@ global offset   name            ROM area
 0x4030a8        ?               0x30a8-0x30df
 0x4030e0        ?               0x30e0-0x3117
 0x403118        ?               0x3118-0x320b
-0x40320c        ?               0x320c-0x322b
+0x40320c        swapn           0x320c-0x322b
 0x40322c        ?               0x322c-0x3531
 ...
+
+# math.h ?
+...
+0x40510a        abs             0x510a-0x5113
 
 # string.h
 0x405d9e        memclr          0x5d9e-0x5db1
