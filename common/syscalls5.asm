@@ -24,14 +24,14 @@
         APICall g_drawtext_small,$10,5
         APICall g_drawtext_tiny7,$11,5
         APICall g_drawtext_tiny15,$12,5
-        APICall g_drawtext_font4,$13,5
+        APICall g_drawtext_bold14,$13,5
         APICall g_charwid,$14,5
         APICall g_charhei,$15,5
         APICall g_strlen,$16,5
         APICall g_setfont,$17,5
         APICall g_getfont,$18,5
         APICall g_aligntext,$19,5
-        APICall API_1A_5,$1a,5
+        APICall SYSCALL5_1A,$1a,5
         APICall g_copybmp,$1b,5
         APICall g_cwrite,$1c,5
         APICall g_recfill,$1d,5
